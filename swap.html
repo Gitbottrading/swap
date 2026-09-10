@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Devnet Swap Test UI</title>
+    <link rel="stylesheet" href="swap.css">
+    <!-- Carga de Buffer Global para navegadores (Necesario para serializar transacciones Solana) -->
+    <script src="https://cloudflare.com"></script>
+    <script>window.Buffer = window.Buffer || buffer.Buffer;</script>
+    <!-- Carga de Solana Web3.js desde CDN estable v1.x -->
+    <script src="https://unpkg.com"></script>
+</head>
+<body>
+    <div class="swap-container">
+        <div class="swap-header">
+            <h2>Swap Devnet 🚀</h2>
+            <button id="btn-connect" class="wallet-btn">Conectar Wallet</button>
+        </div>
+
+        <div class="pool-badge">
+            <span>Pool ID activo:</span>
+            <code id="pool-display">GfHF9VafAZr...nchx</code>
+        </div>
+
+        <div class="swap-box">
+            <div class="input-group">
+                <label for="amount-input">Pagas (SOL Devnet)</label>
+                <input type="number" id="amount-input" placeholder="0.0" value="0.1" step="0.01">
+            </div>
+
+            <div class="swap-arrow">⬇️</div>
+
+            <div class="input-group">
+                <label>Recibes (Tu Token)</label>
+                <input type="text" id="token-output" placeholder="Calculando..." readonly>
+                <small class="mint-info">Mint: 7o9ubxJz...RzL1</small>
+            </div>
+
+            <div class="slippage-box">
+                <label>Tolerancia de Deslizamiento:</label>
+                <select id="slippage-select">
+                    <option value="0.01">1%</option>
+                    <option value="0.03" selected>3%</option>
+                    <option value="0.05">5%</option>
+                </select>
+            </div>
+
+            <button id="btn-swap" class="swap-action-btn" disabled>Iniciar Swap</button>
+        </div>
+
+        <div id="status-logger" class="logger">
+            <p class="system-msg">Estado: Esperando conexión de wallet...</p>
+        </div>
+    </div>
+
+    <script src="swap.js"></script>
+</body>
+</html>
